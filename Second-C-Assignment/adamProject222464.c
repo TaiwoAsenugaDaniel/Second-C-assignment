@@ -57,5 +57,5 @@ while(fgets(test_case, 100, fp)){
 fclose(fp);
 return 0;
 
-// close of int main
+// closing tag of int main
 }
