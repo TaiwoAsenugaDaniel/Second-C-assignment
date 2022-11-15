@@ -5,28 +5,30 @@
 
 int main(){
 
-    FILE *file;
-    // file = fopen("adam.txt", "r");
-    file = fopen("adam.in", "r");
-    int num;
-    int i=0;
-    
-    // read the first line of the file 
-    fscanf(file, "%i", &num);
-    int list[num];
-    char testcase[100];
-    int counter = 1;
+    // code block to open the file for reading
+    FILE *fp = fopen("adam.in", "r");
 
-while(fgets(testcase, 100, file)){
+    // code block to read the first line of the file 
+    int number;
+    int i = 0;
 
-    // To remove the newline chararcter that fgets retains
-    testcase[strcspn(testcase, "\r\n")] = '\0';
-    if(counter >=2){
+    fscanf(fp, "%i", &number);
+    int list[number];
+    char test_case[100];
+    int j = 1; //counter initialized to 1
+
+//while loop to loop through the lines of text provided
+while(fgets(test_case, 100, fp)){
+
+    // To remove the number of test cases read initially
+    test_case[strcspn(test_case, "\r\n")] = '\0';
+    if(j >=2){
         int steps =0;
         
-        for(int count=0; count<strlen(testcase); count++){
+        //for loop to loop through each character in each string
+        for(int count = 0; strlen(test_case) > count; count++){
              // If else iteration to check for U
-            if(testcase[count] == 'U'){
+            if(test_case[count] == 'U'){
                 steps++;
             }
             else{
@@ -38,10 +40,12 @@ while(fgets(testcase, 100, file)){
         printf("%i\n", steps);
         i++;
     }
-    counter++;
+    j++;
 }
-fclose(file);
+
+//function to close the file opened initially
+fclose(fp);
 return 0;
 
-// close of int function
+// close of int main
 }
